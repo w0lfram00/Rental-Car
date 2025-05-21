@@ -19,7 +19,7 @@ const persistConfig = {
 
 export const store = configureStore({
   reducer: {
-    store: persistReducer(persistConfig, mainReducer),
+    main: persistReducer(persistConfig, mainReducer),
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -29,4 +29,7 @@ export const store = configureStore({
     }),
 });
 
+export type AppStore = typeof store;
+export type AppDispatch = AppStore["dispatch"];
+export type RootState = ReturnType<AppStore["getState"]>;
 export const persistor = persistStore(store);

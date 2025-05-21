@@ -4,8 +4,8 @@ import type { Car, FilterOptions } from "../types/types";
 
 const carsApi = axios.create({ baseURL: "https://car-rental-api.goit.global" });
 
-type CarsResponse = {
-  cars: [Car];
+export type CarsResponse = {
+  cars: Array<Car>;
   totalPages: number;
 };
 

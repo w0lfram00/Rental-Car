@@ -2,32 +2,38 @@ import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import type { Car } from "../types/types";
 import { getBrands, getCarById, getCarsFiltered } from "./operations";
 
-type InitialState = {
+export interface StoreState {
   cars: Array<Car>;
+  selectedCar: Car | null;
   brands: Array<string>;
   totalPages: number;
+  page: number;
   isLoading: boolean;
-  selectedCar: Car | null;
   isError: unknown | null;
-};
+}
 
-const initialState: InitialState = {
+const initialState: StoreState = {
   cars: [],
+  selectedCar: null,
   brands: [],
   totalPages: 0,
+  page: 1,
   isLoading: false,
-  selectedCar: null,
   isError: null,
 };
 
 const slice = createSlice({
   name: "mainReducer",
   initialState,
-  reducers: {},
+  reducers: {
+    resetCarsState: (state) => {
+      state.cars = [];
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getCarsFiltered.fulfilled, (state, action) => {
-        state.cars = action.payload.cars;
+        state.cars.push(...action.payload.cars);
         state.totalPages = action.payload.totalPages;
       })
       .addCase(getCarById.fulfilled, (state, action) => {
@@ -67,3 +73,4 @@ const slice = createSlice({
 });
 
 export const mainReducer = slice.reducer;
+export const { resetCarsState } = slice.actions;
