@@ -10,7 +10,7 @@ const CarsAccessories = ({ car }: Props) => {
       <h4>Accessories and functionalities:</h4>
       <ul>
         {car.accessories.map((accessory) => (
-          <li>{accessory}</li>
+          <li key={accessory}>{accessory}</li>
         ))}
       </ul>
     </>

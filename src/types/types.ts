@@ -1,13 +1,12 @@
-interface AllFilterOptions {
-  brand: string;
-  rentalPrice: string;
-  minMileage: number;
-  maxMileage: number;
-  limit: number;
+export interface FilterOptions {
+  brand?: string;
+  rentalPrice?: string;
+  minMileage?: number;
+  maxMileage?: number;
+  limit?: number;
   page: number;
 }
 
-export type FilterOptions = Partial<AllFilterOptions>;
 export interface Car {
   id: string;
   year: number;

@@ -9,7 +9,7 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-import { mainReducer } from "./slice";
+import { mainReducer, type SliceState } from "./slice";
 
 const persistConfig = {
   key: "main",
@@ -28,6 +28,10 @@ export const store = configureStore({
       },
     }),
 });
+
+export type StoreState = {
+  main: SliceState;
+};
 
 export type AppStore = typeof store;
 export type AppDispatch = AppStore["dispatch"];

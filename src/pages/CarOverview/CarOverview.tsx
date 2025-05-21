@@ -16,7 +16,7 @@ const CarOverview = () => {
   const isLoading = useAppSelector(selectIsLoading);
   useEffect(() => {
     if (id != undefined) dispatch(getCarById(id));
-  }, [id, dispatch]);
+  }, [dispatch]);
 
   return car && isLoading ? (
     <div>

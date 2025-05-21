@@ -1,23 +1,23 @@
-import { createSlice, isAnyOf } from "@reduxjs/toolkit";
-import type { Car } from "../types/types";
+import { createSlice, isAnyOf, type PayloadAction } from "@reduxjs/toolkit";
+import type { Car, FilterOptions } from "../types/types";
 import { getBrands, getCarById, getCarsFiltered } from "./operations";
 
-export interface StoreState {
+export interface SliceState {
   cars: Array<Car>;
   selectedCar: Car | null;
   brands: Array<string>;
   totalPages: number;
-  page: number;
+  filterOptions: FilterOptions;
   isLoading: boolean;
   isError: unknown | null;
 }
 
-const initialState: StoreState = {
+const initialState: SliceState = {
   cars: [],
   selectedCar: null,
   brands: [],
   totalPages: 0,
-  page: 1,
+  filterOptions: { page: 1 },
   isLoading: false,
   isError: null,
 };
@@ -28,6 +28,16 @@ const slice = createSlice({
   reducers: {
     resetCarsState: (state) => {
       state.cars = [];
+    },
+    resetFilter: (state) => {
+      state.filterOptions = initialState.filterOptions;
+    },
+    setFilter: (state, action: PayloadAction<FilterOptions>) => {
+      state.filterOptions = action.payload;
+      state.filterOptions.page = 1;
+    },
+    setPage: (state, action: PayloadAction<number>) => {
+      state.filterOptions = { ...state.filterOptions, page: action.payload };
     },
   },
   extraReducers: (builder) => {
@@ -73,4 +83,5 @@ const slice = createSlice({
 });
 
 export const mainReducer = slice.reducer;
-export const { resetCarsState } = slice.actions;
+export const { resetCarsState, setFilter, setPage, resetFilter } =
+  slice.actions;

@@ -9,7 +9,7 @@ const CarList = ({ cars }: Props) => {
   return (
     <ul>
       {cars.map((car) => (
-        <li id={car.id}>
+        <li key={car.id}>
           <CarCard car={car} />
         </li>
       ))}
