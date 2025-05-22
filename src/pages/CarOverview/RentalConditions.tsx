@@ -2,7 +2,7 @@ import { IoCheckmarkCircleOutline } from "react-icons/io5";
 
 const RentalConditions = () => {
   return (
-    <>
+    <div>
       <h4>Rental Conditions:</h4>
       <ul>
         <li>
@@ -18,7 +18,7 @@ const RentalConditions = () => {
           <p>Valid driver's license</p>
         </li>
       </ul>
-    </>
+    </div>
   );
 };
 

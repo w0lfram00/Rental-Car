@@ -1,16 +1,17 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
+import s from "./Header.module.css";
+import Logo from "../Logo/Logo";
 
 const Header = () => {
   return (
-    <header>
-      <p>
-        Rental<span>Car</span>
-      </p>
-      <nav>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/catalog">Catalog</NavLink>
-      </nav>
+    <header className={s.header}>
+      <div className="container">
+        <Logo />
+        <nav>
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/catalog">Catalog</NavLink>
+        </nav>
+      </div>
     </header>
   );
 };

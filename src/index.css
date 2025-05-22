@@ -1,4 +1,4 @@
-@import "modern-normalize";
+@import "/node_modules/modern-normalize/modern-normalize.css";
 
 :root {
   --main: #101828;
@@ -13,14 +13,6 @@
   --second-family: "Inter", sans-serif;
 }
 
-#root {
-  display: flex;
-  width: fit-content;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 auto;
-}
-
 body {
   font-size: 28px;
   color: black;
@@ -29,6 +21,7 @@ body {
   font-size: 16px;
   line-height: 125%;
   color: var(--main);
+  background-color: var(--white);
 }
 
 ul,
@@ -51,4 +44,20 @@ h5,
 h6,
 p {
   margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+@media screen and (width<1400px) {
+  .container {
+    margin: 0 120px;
+  }
 }

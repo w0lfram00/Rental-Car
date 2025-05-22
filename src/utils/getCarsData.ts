@@ -5,6 +5,6 @@ export const getCarsCountry = (car: Car): string => {
 };
 
 export const getCarsCity = (car: Car): string => {
-  const carNoCountry = car.address.slice(car.address.lastIndexOf(",") + 1);
+  const carNoCountry = car.address.slice(0, car.address.lastIndexOf(","));
   return carNoCountry.slice(carNoCountry.lastIndexOf(",") + 1);
 };

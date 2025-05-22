@@ -11,8 +11,14 @@ import {
 } from "../../redux/selectors";
 import { getBrands, getCarsFiltered } from "../../redux/operations";
 import type { FilterOptions } from "../../types/types";
-import { resetCarsState, resetFilter, setFilter } from "../../redux/slice";
+import {
+  nextPage,
+  resetCarsState,
+  resetFilter,
+  setFilter,
+} from "../../redux/slice";
 import Loading from "../../components/Loading/Loading";
+import s from "./Catalog.module.css";
 
 const Catalog = () => {
   const dispatch = useAppDispatch();
@@ -38,10 +44,19 @@ const Catalog = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       <FilterForm onSubmit={handleSubmit} />
       <CarList cars={cars} />
-      {page < totalPages && <button>Load more</button>}
+      {page < totalPages && (
+        <button
+          className={s.button}
+          onClick={() => {
+            dispatch(nextPage());
+          }}
+        >
+          Load more
+        </button>
+      )}
       {isLoading && <Loading />}
     </div>
   );

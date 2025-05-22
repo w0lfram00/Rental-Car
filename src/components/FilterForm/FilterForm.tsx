@@ -3,7 +3,9 @@ import CustomSelect from "./CustomSelect";
 import { generateNumbers } from "../../utils/generateNumbers";
 import type { FilterOptions } from "../../types/types";
 import { useAppSelector } from "../../redux/hooks";
-import { selectBrands } from "../../redux/selectors";
+import { selectBrands, selectIsLoading } from "../../redux/selectors";
+import s from "./FilterForm.module.css";
+import clsx from "clsx";
 
 type Props = {
   onSubmit: (FilterOptions: FilterOptions) => void;
@@ -11,32 +13,51 @@ type Props = {
 
 const FilterForm = ({ onSubmit }: Props) => {
   const brands = useAppSelector(selectBrands);
+  const isLoading = useAppSelector(selectIsLoading);
 
-  const initialValues = {};
+  const initialValues = {
+    brand: "",
+    rentalPrice: "",
+    minMileage: 0,
+    maxMileage: 0,
+  };
 
   return (
-    <div>
-      <Formik
-        initialValues={initialValues}
-        onSubmit={(values) => {
-          onSubmit({ page: 1, ...values });
-        }}
-      >
-        <Form>
-          <CustomSelect name="Brand" inputName="brand" options={brands} />
+    <Formik
+      initialValues={initialValues}
+      onSubmit={(values) => {
+        onSubmit({ page: 1, ...values });
+      }}
+    >
+      <Form className={s.wrapper}>
+        <label>
+          <p>Car brand</p>
+          <CustomSelect name="brand" inputName="Brand" options={brands} />
+        </label>
+        <label>
+          <p>Price/ 1 hour</p>
           <CustomSelect
-            inputName="rentalPrice"
-            name="Price"
-            options={generateNumbers(30, 200, 10)}
+            inputName="Price"
+            name="rentalPrice"
+            options={generateNumbers(30, 80, 10)}
           />
-          <div>
-            <Field type="number" name="minMileage" />
-            <Field type="number" name="msxMileage" />
+        </label>
+        <label>
+          <p>Car mileage / km</p>
+          <div className={s.mileage}>
+            <Field type="number" name="minMileage" placeholder="From" />
+            <Field type="number" name="maxMileage" placeholder="To" />
           </div>
-          <button type="submit">Search</button>
-        </Form>
-      </Formik>
-    </div>
+        </label>
+        <button
+          className={clsx(s.button, "button-general")}
+          type="submit"
+          disabled={isLoading}
+        >
+          Search
+        </button>
+      </Form>
+    </Formik>
   );
 };
 

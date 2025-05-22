@@ -1,0 +1,23 @@
+.header {
+  padding: 24px 0;
+  background: var(--badges);
+
+  div {
+    display: flex;
+    justify-content: space-between;
+
+    nav {
+      display: flex;
+      gap: 32px;
+
+      a {
+        transition: color 250ms ease;
+
+        &:focus,
+        &:hover {
+          color: var(--button-hover);
+        }
+      }
+    }
+  }
+}

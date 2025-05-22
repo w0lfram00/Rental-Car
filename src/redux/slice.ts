@@ -39,6 +39,9 @@ const slice = createSlice({
     setPage: (state, action: PayloadAction<number>) => {
       state.filterOptions = { ...state.filterOptions, page: action.payload };
     },
+    nextPage: (state) => {
+      state.filterOptions.page++;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -83,5 +86,5 @@ const slice = createSlice({
 });
 
 export const mainReducer = slice.reducer;
-export const { resetCarsState, setFilter, setPage, resetFilter } =
+export const { resetCarsState, setFilter, setPage, resetFilter, nextPage } =
   slice.actions;

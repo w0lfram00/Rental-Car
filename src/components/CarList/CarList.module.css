@@ -1,0 +1,79 @@
+.carList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  row-gap: 48px;
+  justify-content: center;
+
+  li {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 240px;
+    width: calc(((100% - 3 * 32px) / 4));
+
+    img {
+      width: 100%;
+      height: 268px;
+      object-fit: cover;
+      border-radius: 14px;
+    }
+
+    .card {
+      margin-top: 16px;
+      margin-bottom: 28px;
+
+      .titleBlock {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        height: 20px;
+        overflow: hidden;
+
+        .title {
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 125%;
+          color: var(--main);
+          span {
+            color: var(--button);
+          }
+        }
+      }
+
+      .desc {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        p {
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 133%;
+          color: var(--gray);
+          overflow: hidden;
+          max-height: 16px;
+        }
+      }
+    }
+
+    .heartButton {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      cursor: pointer;
+
+      background: transparent;
+      border-color: transparent;
+      border-width: 0;
+      padding: 5px;
+    }
+
+    .button {
+      align-self: center;
+      display: inline-block;
+      text-align: center;
+      height: 44px;
+      width: 100%;
+    }
+  }
+}

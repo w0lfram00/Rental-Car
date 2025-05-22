@@ -1,0 +1,73 @@
+.container {
+  display: flex;
+  gap: 72px;
+  padding-top: 84px;
+  padding-bottom: 108px;
+
+  img {
+    border-radius: 19px;
+    margin-bottom: 40px;
+  }
+
+  .miniContainer {
+    display: flex;
+    flex-direction: column;
+
+    .label {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 68px;
+
+      .title {
+        display: flex;
+        gap: 16px;
+        align-items: baseline;
+        margin-top: 20px;
+      }
+      .location {
+        display: flex;
+        gap: 16px;
+        margin-top: 8px;
+        div {
+          display: flex;
+          gap: 6px;
+        }
+      }
+      .price {
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 133%;
+        color: var(--button);
+
+        margin-top: 16px;
+      }
+      .desc {
+        margin-top: 32px;
+      }
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+
+      h4 {
+        margin-bottom: 20px;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 120%;
+      }
+      ul {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        li {
+          display: flex;
+          gap: 8px;
+        }
+      }
+    }
+  }
+}

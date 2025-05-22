@@ -9,7 +9,7 @@ type Props = {
 
 const CarSpecifications = ({ car }: Props) => {
   return (
-    <>
+    <div>
       <h4>Car Specifications:</h4>
       <ul>
         <li>
@@ -29,7 +29,7 @@ const CarSpecifications = ({ car }: Props) => {
           <p>Engine Size: {car.engineSize}</p>
         </li>
       </ul>
-    </>
+    </div>
   );
 };
 

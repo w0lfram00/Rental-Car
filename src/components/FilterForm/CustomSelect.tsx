@@ -8,8 +8,10 @@ type Props = {
 
 const CustomSelect = ({ inputName, name, options }: Props) => {
   return (
-    <Field as="select" name={inputName}>
-      <option value="none">Choose a {name}</option>
+    <Field as="select" name={name}>
+      <option value="" disabled>
+        Choose a {inputName}
+      </option>
       {options.map((option) => (
         <option key={option.toString()} value={option}>
           {option}

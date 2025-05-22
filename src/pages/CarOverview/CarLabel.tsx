@@ -1,6 +1,7 @@
 import type { Car } from "../../types/types";
 import { SlLocationPin } from "react-icons/sl";
 import { getCarsCity, getCarsCountry } from "../../utils/getCarsData";
+import s from "./CarOverview.module.css";
 
 type Props = {
   car: Car;
@@ -8,28 +9,25 @@ type Props = {
 
 const CarLabel = ({ car }: Props) => {
   return (
-    <>
-      <div>
-        <img src={car.img} alt={car.model} />
+    <div className={s.label}>
+      <div className={s.title}>
+        <h2>
+          {car.brand} {car.model}, {car.year}
+        </h2>
+        <span> Id: {Math.floor(Math.random() * 20000)}</span>
       </div>
-      <div>
-        <div>
-          <h2>
-            {car.brand} {car.model}, {car.year}
-          </h2>
-          <span> Id: {car.id}</span>
-        </div>
+      <div className={s.location}>
         <div>
           <SlLocationPin />
           <p>
             {getCarsCity(car)}, {getCarsCountry(car)}
           </p>
-          <p>Mileage: {car.mileage} km</p>
         </div>
-        <h3>${car.rentalPrice}</h3>
-        <p>{car.description}</p>
+        <p>Mileage: {car.mileage} km</p>
       </div>
-    </>
+      <h3 className={s.price}>${car.rentalPrice}</h3>
+      <p className={s.desc}>{car.description}</p>
+    </div>
   );
 };
 
