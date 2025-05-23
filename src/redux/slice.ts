@@ -4,6 +4,7 @@ import { getBrands, getCarById, getCarsFiltered } from "./operations";
 
 export interface SliceState {
   cars: Array<Car>;
+  favCars: Array<string>;
   selectedCar: Car | null;
   brands: Array<string>;
   totalPages: number;
@@ -14,6 +15,7 @@ export interface SliceState {
 
 const initialState: SliceState = {
   cars: [],
+  favCars: [],
   selectedCar: null,
   brands: [],
   totalPages: 0,
@@ -41,6 +43,9 @@ const slice = createSlice({
     },
     nextPage: (state) => {
       state.filterOptions.page++;
+    },
+    addToFav: (state, action: PayloadAction<string>) => {
+      state.favCars.push(action.payload);
     },
   },
   extraReducers: (builder) => {
@@ -86,5 +91,11 @@ const slice = createSlice({
 });
 
 export const mainReducer = slice.reducer;
-export const { resetCarsState, setFilter, setPage, resetFilter, nextPage } =
-  slice.actions;
+export const {
+  resetCarsState,
+  setFilter,
+  setPage,
+  resetFilter,
+  nextPage,
+  addToFav,
+} = slice.actions;

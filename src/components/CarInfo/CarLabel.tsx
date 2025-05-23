@@ -1,7 +1,7 @@
 import type { Car } from "../../types/types";
 import { SlLocationPin } from "react-icons/sl";
 import { getCarsCity, getCarsCountry } from "../../utils/getCarsData";
-import s from "./CarOverview.module.css";
+import s from "../../pages/CarOverview/CarOverview.module.css";
 
 type Props = {
   car: Car;

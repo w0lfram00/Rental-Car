@@ -14,7 +14,7 @@ import { mainReducer, type SliceState } from "./slice";
 const persistConfig = {
   key: "main",
   storage,
-  whitelist: ["accessToken"],
+  whitelist: ["favCars"],
 };
 
 export const store = configureStore({

@@ -4,7 +4,7 @@
     url("/src/assets/home_bg.jpg");
   background-size: cover;
   background-position: 50% 50%;
-  padding-bottom: 10%;
+  padding-bottom: 8%;
   top: 68px;
   left: 0;
   height: calc(100% - 68px);

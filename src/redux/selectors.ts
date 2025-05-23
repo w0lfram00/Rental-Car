@@ -8,3 +8,4 @@ export const selectTotalPages = (state: StoreState) => state.main.totalPages;
 export const selectPage = (state: StoreState) => state.main.filterOptions.page;
 export const selectFilterOptions = (state: StoreState) =>
   state.main.filterOptions;
+export const selectFavCars = (state: StoreState) => state.main.favCars;

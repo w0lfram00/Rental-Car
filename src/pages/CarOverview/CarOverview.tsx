@@ -1,16 +1,16 @@
 import { useParams } from "react-router-dom";
-import CarsAccessories from "./CarsAccessories";
 import { useEffect } from "react";
 import { getCarById } from "../../redux/operations";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { selectIsLoading, selectSelectedCar } from "../../redux/selectors";
 import Loading from "../../components/Loading/Loading";
-import CarSpecifications from "./CarSpecifications";
-import RentalConditions from "./RentalConditions";
-import CarLabel from "./CarLabel";
-import RentForm from "./RentForm";
 import clsx from "clsx";
 import s from "./CarOverview.module.css";
+import RentForm from "../../components/RentForm/RentForm";
+import CarsAccessories from "../../components/CarInfo/CarsAccessories";
+import CarSpecifications from "../../components/CarInfo/CarSpecifications";
+import CarLabel from "../../components/CarInfo/CarLabel";
+import RentalConditions from "../../components/CarInfo/RentalConditions";
 
 const CarOverview = () => {
   const { id } = useParams();

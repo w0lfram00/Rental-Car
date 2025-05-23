@@ -11,14 +11,16 @@ const RentForm = () => {
       <p>Stay connected! We are always ready to help you.</p>
       <Formik
         initialValues={initialValues}
-        onSubmit={(_, actions) => {
+        onSubmit={(values, actions) => {
+          console.dir(values);
+          alert("order compleat! Wait for as to contact you!");
           actions.resetForm();
         }}
       >
         <Form>
-          <Field name="name" placeholder="Name*" />
-          <Field name="email" type="email" placeholder="Email*" />
-          <Field name="date" type="date" placeholder="Booking date" />
+          <Field name="name" placeholder="Name*" required />
+          <Field name="email" type="email" placeholder="Email*" required />
+          <Field name="date" type="date" />
           <Field name="comment" as="textarea" placeholder="Comment" />
           <button className={clsx(s.button, "button-general")} type="submit">
             Send

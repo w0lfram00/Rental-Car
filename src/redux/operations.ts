@@ -11,10 +11,27 @@ export type CarsResponse = {
 
 export const getCarsFiltered = createAsyncThunk(
   "main/getCars",
-  async (options: FilterOptions | null, thunkAPI) => {
+  async (options: FilterOptions, thunkAPI) => {
     try {
+      const optionsToSend: Partial<FilterOptions> = Object.entries(
+        options
+      ).reduce(
+        (acc, [key, value]) => {
+          if (
+            value !== null &&
+            value !== undefined &&
+            value !== "" &&
+            value !== 0
+          ) {
+            acc[key as keyof FilterOptions] = value;
+          }
+          return acc;
+        },
+        { page: options.page } as Partial<FilterOptions>
+      );
+
       const response = await carsApi.get<CarsResponse>("/cars", {
-        params: options,
+        params: optionsToSend,
       });
       return response.data;
     } catch {
